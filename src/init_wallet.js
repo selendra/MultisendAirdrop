@@ -1,4 +1,3 @@
-// const { count } = require('console');
 const csv = require('csv-parser');
 const { on } = require('events');
 const fs = require('fs');
@@ -30,3 +29,4 @@ const init = async () => {
         });
 
 }
+init();
