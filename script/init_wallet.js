@@ -1,3 +1,4 @@
+require("dotenv").config()
 const csv = require('csv-parser');
 const { on } = require('events');
 const fs = require('fs');
@@ -8,7 +9,7 @@ const init = async () => {
     let count = 0;
     let b = 0;
     let wallets = [];
-    fs.createReadStream('data/sameple_data.csv')
+    fs.createReadStream(process.env.DATA_WALLET)
         .pipe(csv())
         .on('data', (row) => {
             //row._0.length
