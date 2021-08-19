@@ -17,12 +17,9 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+require("dotenv").config()
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const mnemonic = process.env.MNEMONIC.toString().trim();
 
 module.exports = {
   /**
@@ -72,6 +69,22 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
+    bscMainnet: {
+      provider: () => new HDWalletProvider(
+        mnemonic,
+        'https://bsc-dataseed.binance.org'
+      ),
+      network_id: 56,
+      skipDryRun: true
+    },
+    bscTestnet: {
+      provider: () => new HDWalletProvider(
+        mnemonic,
+        'https://data-seed-prebsc-1-s1.binance.org:8545'
+      ),
+      network_id: 97,
+      skipDryRun: true
+    }
   },
 
   // Set default mocha options here, use special reporters etc.
@@ -92,6 +105,13 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     }
+  },
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+  api_keys: {
+    //bscscan: BSCSCANAPIKEY
+    bscscan: process.env.BSC_API_KEYS
   },
 
   // Truffle DB is currently disabled by default; to enable it, change enabled: false to enabled: true
