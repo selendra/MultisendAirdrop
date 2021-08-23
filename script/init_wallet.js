@@ -54,7 +54,7 @@ async function BachProcessing(_batchAddress) {
     let wallets = [];
 
     for (let i = 0; i < _batchAddress.length; i++) {
-        if (count == 5) {
+        if (count == 300) {
             console.log("Batches : ", b, ", ", wallets)
             await tx(wallets);
             await sleep(20000);
