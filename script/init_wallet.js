@@ -39,7 +39,7 @@ async function tx(_address) {
         // })
 
         // Initializing Transaction
-        const createReceipt = await AirdropContract.doAirdrop(process.env.TOKEN_CONTRACT.toString().trim(), _address, ethers.utils.parseEther("10"));
+        const createReceipt = await AirdropContract.doAirdrop(process.env.TOKEN_CONTRACT.toString().trim(), _address, ethers.utils.parseEther("50"));
         await createReceipt.wait();
         console.log(`Tx successful with hash: ${createReceipt.hash}`);
 
