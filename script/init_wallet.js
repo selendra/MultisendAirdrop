@@ -11,7 +11,7 @@ const url = process.env.URL.toString().trim();
 /*
     Import ABI contract 
 */
-var jsonFile = "build/contracts/Airdrop.json";
+var jsonFile = "build/contracts/Airdrops.json";
 var parsed = JSON.parse(fs.readFileSync(jsonFile));
 const abi = parsed.abi;
 const WProvider = new ethers.providers.JsonRpcProvider(url);
@@ -39,7 +39,7 @@ async function tx(_address) {
         // })
 
         // Initializing Transaction
-        const createReceipt = await AirdropContract.doAirdrop(process.env.TOKEN_CONTRACT.toString().trim(), _address, ethers.utils.parseEther("50"));
+        const createReceipt = await AirdropContract.Airdrop(process.env.TOKEN_CONTRACT.toString().trim(), _address, ethers.utils.parseEther("50"));
         await createReceipt.wait();
         console.log(`Tx successful with hash: ${createReceipt.hash}`);
 

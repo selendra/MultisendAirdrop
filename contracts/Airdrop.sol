@@ -544,10 +544,10 @@ library SafeERC20 {
 /**
  * @title ERC20 Airdrop dapp smart contract
  */
-contract Airdrop {
+contract Airdrops {
     using SafeERC20 for IERC20;
 
-    function doAirdrop(
+    function Airdrop(
         IERC20 token,
         address[] calldata _addresses,
         uint256 _amount
